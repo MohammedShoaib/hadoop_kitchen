@@ -18,6 +18,11 @@ local.properties
 .settings/
 .loadpath
 *~
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
 
 # External tool builders
 .externalToolBuilders/
