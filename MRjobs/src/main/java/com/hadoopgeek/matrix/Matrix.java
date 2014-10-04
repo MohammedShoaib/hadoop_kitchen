@@ -27,7 +27,9 @@ public class Matrix
 		}
 		
 		Configuration conf = new Configuration();
+		conf.set("dimension", "5"); // set the matrix dimension here.
 		Job job = Job.getInstance(conf);
+		
 		//conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020"); // take this value from core-site.xml
 		FileSystem fs = FileSystem.get(conf);
 			
@@ -49,6 +51,10 @@ public class Matrix
 				
 		Path input = new Path(args[0]);
 		Path output = new Path(args[1]);
+		
+		// Set the dimension of matrix 
+		
+		
 				
 		if(!fs.exists(input)) 
 		{

@@ -2,6 +2,7 @@ package com.hadoopgeek.matrix;
 
 import java.io.IOException;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -20,8 +21,15 @@ public class Matrix_Reducer extends Reducer<Text, Text, Text, IntWritable>
 						throws IOException, InterruptedException 
 	{
 		
-		int[] row = new int[5]; // hard coding as 5 X 5 matrix
-		int[] col = new int[5];
+		Configuration conf = context.getConfiguration();
+		String dimension = conf.get("dimension");
+		
+		int dim = Integer.parseInt(dimension);
+		
+		//System.out.println("Dimension from Reducer = " + dimension);
+		
+		int[] row = new int[dim]; // hard coding as 5 X 5 matrix
+		int[] col = new int[dim];
 		
 		for(Text val : values)
 		{

@@ -2,6 +2,7 @@ package com.hadoopgeek.matrix;
 
 import java.io.IOException;
 
+import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -29,9 +30,17 @@ public class Matrix_Mapper extends Mapper<LongWritable,Text,Text,Text>
 		
 		String row, col;
 		
+		Configuration conf = context.getConfiguration();
+		String dimension = conf.get("dimension");
+		
+		System.out.println("Dimension from Mapper = " + dimension);
+		
+		int dim = Integer.parseInt(dimension);
+		
+		
 		if(mat.matches("a"))
 		{
-			for (int i =0; i < 5; i++) // hard coding matrix size 5 
+			for (int i =0; i < dim ; i++) // hard coding matrix size 5 
 			{
 				row = entry[1].trim(); // rowid
 				sKey = row+i;
@@ -42,7 +51,7 @@ public class Matrix_Mapper extends Mapper<LongWritable,Text,Text,Text>
 		
 		if(mat.matches("b"))
 		{
-			for (int i =0; i < 5; i++)
+			for (int i =0; i < dim ; i++)
 			{
 				col = entry[2].trim(); // colid
 				sKey = i+col;
