@@ -40,9 +40,9 @@ public class HDFSApi
     {
         System.out.println( "Hello World!" );
         //Compress("input/matrix.txt", "gz");
-        DeCompress("input/matrix.gz");
-        //WriteFile("/home/cloudera/datasets/matrix.txt", "input/del");
-        //ReadFile("input/matrix.txt", "/home/cloudera");
+       // DeCompress("input/matrix.gz");
+        // WriteFile("/Users/jithesh/Technical/git_home/hadoop_kitchen/datasets/wc.text", "/data");
+        ReadFile("/data/wc.text", "/Users/jithesh");
         //PrintFileStatus("input/ma.txt");
         
     }
@@ -63,7 +63,7 @@ public class HDFSApi
     	try
     	{
     		Configuration conf = new Configuration();
-        	conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020"); // take this value from core-site.xml
+        	conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml
         	FileSystem fs = FileSystem.get(conf);
         	Path srcPath = new Path(src);
         	if(!fs.exists(srcPath))
@@ -188,7 +188,7 @@ public class HDFSApi
 		try
 		{
 			Configuration conf = new Configuration();
-			conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020"); // take this value from core-site.xml/ Use it only when debugging.
+			conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml/ Use it only when debugging.
 			fs = FileSystem.get(conf); // hdfs
 			if(fs == null) return false;
 			
@@ -232,7 +232,7 @@ public class HDFSApi
 		try
 		{
 			Configuration conf = new Configuration();
-			conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020"); // take this value from core-site.xml/ Use it only when debugging.
+			conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml/ Use it only when debugging.
 			fs = FileSystem.get(conf);
 			if(fs == null) return false;
 			
