@@ -36,6 +36,7 @@ release.properties
 # PDT-specific
 .buildpath
 
+RemoteSystemsTempFiles/
 
 #################
 ## Visual Studio
