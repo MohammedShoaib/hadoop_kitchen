@@ -1,6 +1,7 @@
 package com.hadoopgeek.wordcount;
 
 import java.io.IOException;
+import java.net.URL;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -13,7 +14,7 @@ import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 
-
+import java.net.URLClassLoader;
 public class WordCount 
 {
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException 
@@ -23,6 +24,14 @@ public class WordCount
 			System.err.println("Usage : WordCount <input path> <output path>");
 			System.exit(-1);
 		}
+		
+		ClassLoader cl = ClassLoader.getSystemClassLoader();
+
+	    URL[] urls = ((URLClassLoader)cl).getURLs();
+
+	    for(URL url: urls){
+	        System.out.println(url.getFile());
+	    }
 		
 		Configuration conf = new Configuration();
 		//conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020"); // take this value from core-site.xml
