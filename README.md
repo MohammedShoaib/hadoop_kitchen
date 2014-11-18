@@ -18,8 +18,9 @@ This is the git home for storing my Hadoop projects or sample snippets.
 * start-dfs.sh                       			(start the hdfs daemons)
 * start-yarn.sh                      			(start yarn daemons)
 * mr-jobhistory-daemon.sh start historyserver (start job history server)
-* $hadoop fs -chown -R jithesh /user/jithesh  (set home folder in hdfs for jithesh. you have to create folder structure first.)
-
+* hadoop fs -chown -R jithesh /user/jithesh  (set home folder in hdfs for jithesh. you have to create folder structure first.)
+* hadoop jar MRjobs/target/mrjobs-0.1.jar com.hadoopgeek.test.Test -D color=yellow |grep color (using generic option parser)
+* hadoop fs -getmerge datasets/ncdc/out weath_results  (merge reduce results (part files) into one and save in localpath)
 
 
 

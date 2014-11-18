@@ -19,7 +19,7 @@ public class Weather
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException
 	{
 		
-		if(args.length !=2)
+		if(args.length < 2)
 		{
 			System.err.println("Usage : Weather <input path> <output path>");
 			System.exit(-1);
@@ -41,6 +41,8 @@ public class Weather
 				
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
+		
+		job.setNumReduceTasks(2);
 				
 		Path input = new Path(args[0]);
 		Path output = new Path(args[1]);

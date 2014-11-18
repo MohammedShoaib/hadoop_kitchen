@@ -42,8 +42,13 @@ public class Weather_Mapper extends Mapper<LongWritable, Text, Text, IntWritable
 			String sQuality = line.substring(92,93);
 			if(temp != MISSING && sQuality.matches("[01459]"))
 			{
+				
 				System.out.println(year + "<->" + temp);
 				context.write(new Text(year),new IntWritable(temp));
+			}
+			else
+			{
+				context.setStatus("Error detected !");
 			}
 		}
 		catch(Exception e)
