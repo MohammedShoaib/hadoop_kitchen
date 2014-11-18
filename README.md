@@ -11,6 +11,8 @@ This is the git home for storing my Hadoop projects or sample snippets.
 * hadoop fs -mkdir datasets/hello   (creates a folder in datasets directory)
 * hadoop fs -rm -r datasets/hello   (delete the folder hello and all its contents)
 * hadoop fs -get datasets/test.txt  (copy test.txt to local)
+* hadoop jar MRjobs/target/mrjobs-0.1.jar com.hadoopgeek.test.Test -D color=yellow |grep color (using generic option parser)
+* hadoop fs -getmerge datasets/ncdc/out weath_results  (merge reduce results (part files) into one and save in localpath)
 
 ###### Administration
 
@@ -19,8 +21,7 @@ This is the git home for storing my Hadoop projects or sample snippets.
 * start-yarn.sh                      			(start yarn daemons)
 * mr-jobhistory-daemon.sh start historyserver (start job history server)
 * hadoop fs -chown -R jithesh /user/jithesh  (set home folder in hdfs for jithesh. you have to create folder structure first.)
-* hadoop jar MRjobs/target/mrjobs-0.1.jar com.hadoopgeek.test.Test -D color=yellow |grep color (using generic option parser)
-* hadoop fs -getmerge datasets/ncdc/out weath_results  (merge reduce results (part files) into one and save in localpath)
+
 
 
 
