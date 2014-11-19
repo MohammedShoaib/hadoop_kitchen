@@ -4,13 +4,12 @@ This is a sample oozie job that will simply run the word count MR program.
 
 Now in order to use Oozie workflow you will have to create a particular folder structure on your machine
 
-######Step 1 : Create folder structure  
+######Step 1 : Create folder structure
 
 * wordcount
 ..* job.properties
 ..* workflow.xml
 ..* lib/wordcount.jar
-
 
 ######Step 2 : Create job.properties
 
