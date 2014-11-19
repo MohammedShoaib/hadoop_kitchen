@@ -24,6 +24,30 @@ This is the git home for storing my Hadoop projects or sample snippets.
 * mr-jobhistory-daemon.sh start historyserver (start job history server)
 * hadoop fs -chown -R jithesh /user/jithesh  (set home folder in hdfs for jithesh. you have to create folder structure first.)
 
+###### Hadoop versions and MapReduce.
+There are two MapReduce Frameworks . (classic and yarn).  In the same way there are old and new MapReduce API's. It always confuses developers.
+
+| Features               |  0.2 | 1.X | 2.X  |
+|------------------------|------|-----|------|
+| Old MR API's           | Y    | Y   | Y    |  
+| NEW MR API's           | y    | y   | Y    |  
+| MR Classic (Framework) | Y    | Y   | Y    |
+| MR Yarn (Framework)    | N    | N   | Y    |
+
+Its important to realize that the old and new MapReduce APIs are not the same thing as the classic and YARN-based MapReduce implemen- tations (MapReduce 1 and 2, respectively). The APIs are user-facing client-side features and determine how you write MapReduce programs, whereas the implementations are just different ways of running Map- Reduce programs. All four combinations are supported: both the old and new API run on both MapReduce 1 and 2.
+
+In hadoop 2.X which framework to be used is decided by the entry  "mapreduce.framework.name" . It can be "local" , "classic" or "yarn". 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
