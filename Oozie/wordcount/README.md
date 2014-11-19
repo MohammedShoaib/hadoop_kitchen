@@ -6,11 +6,10 @@ Now in order to use Oozie workflow you will have to create a particular folder s
 
 ######Step 1 : Create folder structure  
 
-wordcount
-	* job.properties
-	* workflow.xml
-	* lib/wordcount.jar
-
+* wordcount
+..* job.properties
+..* workflow.xml
+..* lib/wordcount.jar
 
 
 ######Step 2 : Create job.properties
