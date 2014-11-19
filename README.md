@@ -13,7 +13,6 @@ This is the git home for storing my Hadoop projects or sample snippets.
 * hadoop fs -get datasets/test.txt  (copy test.txt to local)
 * hadoop jar MRjobs/target/mrjobs-0.1.jar com.hadoopgeek.test.Test -D color=yellow |grep color (using generic option parser)
 * $ hadoop jar Technical/git_home/hadoop_kitchen/MRjobs/target/mrjobs-0.1.jar com.hadoopgeek.weather.Weather -D mapreduce.job.reduces=2  datasets/ncdc datasets/ncdc/out (Parser option, ensure that Tool interface is implemented)
-
 * hadoop fs -getmerge datasets/ncdc/out weath_results  (merge reduce results (part files) into one and save in localpath)
 
 
