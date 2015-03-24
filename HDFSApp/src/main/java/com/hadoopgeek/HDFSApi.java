@@ -41,8 +41,9 @@ public class HDFSApi
         System.out.println( "Hello World!" );
         //Compress("input/matrix.txt", "gz");
        // DeCompress("input/matrix.gz");
-        // WriteFile("/Users/jithesh/Technical/git_home/hadoop_kitchen/datasets/wc.text", "/data");
-        ReadFile("/data/wc.text", "/Users/jithesh");
+          WriteFile("/Users/jit/Downloads/temp/a.text", "hdfs://quickstart.cloudera:8020/user/cloudera/data");
+        //ReadFile("/Users/jit/Downloads/a.text", "/Users/jit/Downloads/temp");
+        //ReadFile("/user/cloudera/data/cm_ap.sh", "/Users/jit/Downloads/temp");
         //PrintFileStatus("input/ma.txt");
         
     }
@@ -188,7 +189,8 @@ public class HDFSApi
 		try
 		{
 			Configuration conf = new Configuration();
-			conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml/ Use it only when debugging.
+			//conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml/ Use it only when debugging.
+			//conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020");
 			fs = FileSystem.get(conf); // hdfs
 			if(fs == null) return false;
 			
@@ -232,19 +234,26 @@ public class HDFSApi
 		try
 		{
 			Configuration conf = new Configuration();
-			conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml/ Use it only when debugging.
+			//conf.set("fs.defaultFS", "hdfs://localhost:9000"); // take this value from core-site.xml/ Use it only when debugging.
+			//conf.set("fs.defaultFS", "hdfs://172.16.195.128:8020");
+			conf.set("fs.defaultFS", "hdfs://quickstart.cloudera:8020");
 			fs = FileSystem.get(conf);
 			if(fs == null) return false;
 			
 			Path srcPath = new Path(src);
 			
+			if (!fs.exists(srcPath))
+			{
+				System.out.println("File not found");
+				return false;
+			}
 					
 			in = fs.open(srcPath);
 			if(in == null) return false;
 			
 			dest = dest + "/" + src.substring((src.lastIndexOf("/") + 1));
-			
 			out = new BufferedOutputStream(new FileOutputStream(dest));
+			
 			
 			IOUtils.copyBytes(in, out, conf);
 		}
