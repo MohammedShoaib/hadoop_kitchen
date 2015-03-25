@@ -70,45 +70,45 @@ Now all files are at /usr/lib/..  Now set the path in bash rc file..
 `$ sudo vi .bashrc 
 `
 
-`export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"    
-export PATH="$PATH:$JAVA_HOME/bin"
+    export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"    
+    export PATH="$PATH:$JAVA_HOME/bin"
 
-export ZOOKEEPER_HOME="/usr/lib/zookeeper"
-export PATH="$PATH:$ZOOKEEPER_HOME/bin"
+    export ZOOKEEPER_HOME="/usr/lib/zookeeper"
+    export PATH="$PATH:$ZOOKEEPER_HOME/bin"
 
-export STORM_HOME="/usr/lib/storm"
-export PATH="$PATH:$STORM_HOME/bin"`
+    export STORM_HOME="/usr/lib/storm"
+    export PATH="$PATH:$STORM_HOME/bin"
 
-$ source .bashrc 
+    $ source .bashrc 
 
 Zookeeper Configuration :
 
-$ touch /usr/lib/zookeeper/conf/zoo.cfg
+    $ touch /usr/lib/zookeeper/conf/zoo.cfg
 
 Add following lines. (Ensure you created the directory)
 
-tickTime=2000
-dataDir=/home/ubuntu/tmp/zkeeper
-clientPort=2181
+	tickTime=2000
+	dataDir=/home/ubuntu/tmp/zkeeper
+	clientPort=2181
 
 
-$ zkServer.sh start
-JMX enabled by default
-Using config: /usr/lib/zookeeper/bin/../conf/zoo.cfg
-Starting zookeeper ... STARTED
+	$ zkServer.sh start
+	JMX enabled by default
+	Using config: /usr/lib/zookeeper/bin/../conf/zoo.cfg
+	Starting zookeeper ... STARTED
 
-zkServer.sh status
-JMX enabled by default
-Using config: /usr/lib/zookeeper/bin/../conf/zoo.cfg
-Mode: standalone
+	zkServer.sh status
+	JMX enabled by default
+	Using config: /usr/lib/zookeeper/bin/../conf/zoo.cfg
+	Mode: standalone
 
 
 To interact with ZooKeeper from command line use the client..
 
-$ zkCli.sh 
+	$ zkCli.sh 
 
-[zk: localhost:2181(CONNECTED) 1] ls /
-[zookeeper]
+	[zk: localhost:2181(CONNECTED) 1] ls /
+	[zookeeper]
 
 Here its showing current znodes in zookeeper.
 
@@ -116,37 +116,37 @@ Configuration and starting Storm :
 
 Edit storm.yaml and add following properties
 
-$ vi /usr/lib/storm/conf/storm.yaml 
+	$ vi /usr/lib/storm/conf/storm.yaml 
 
 STORM Config :
 
-yaml storm.zookeeper.servers:
-     - "localhost"
+	yaml storm.zookeeper.servers:
+	     - "localhost"
 
-yaml nimbus.host: "localhost"
+	yaml nimbus.host: "localhost"
 
-yaml supervisor.slots.ports:
-      - 6700
-      - 6701
-      - 6702
-      - 6703
+	yaml supervisor.slots.ports:
+	      - 6700
+	      - 6701
+	      - 6702
+	      - 6703
 
-yaml storm.local.dir: "/home/ubuntu/tmp/storm"
- 
-$ storm nimbus 
+	yaml storm.local.dir: "/home/ubuntu/tmp/storm"
+	 
+	$ storm nimbus 
 
-Once started you will see storm znodes in zookeeper
+Once started you will see storm znodes in zookeeper and now start supervisors and ui.
 
-$ storm supervisor
+	$ storm supervisor
 
-$ storm ui
+	$ storm ui
 
-ubuntu@ip-172-30-0-206:~$ jps
-11279 core
-10973 nimbus
-10743 QuorumPeerMain
-11138 supervisor
-11329 Jps
+	ubuntu@ip-172-30-0-206:~$ jps
+	11279 core
+	10973 nimbus
+	10743 QuorumPeerMain
+	11138 supervisor
+	11329 Jps
 
 To access webui : http://52.3.x.x:8080
 
